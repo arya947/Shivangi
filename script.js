@@ -1,9 +1,15 @@
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 
+/* Create music object */
 const music = new Audio("love.mp3");
 music.loop = true;
 music.volume = 1;
+
+/* 🔑 IMPORTANT: unlock audio on first click anywhere */
+document.body.addEventListener("click", () => {
+  if (music.paused) music.play();
+}, { once: true });
 
 /* NO button runs away */
 noBtn.addEventListener("mouseover", () => {
@@ -12,19 +18,16 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.top = Math.random() * 80 + "vh";
 });
 
-/* YES click */
+/* YES button */
 yesBtn.addEventListener("click", () => {
-  music.play().then(() => {
-    // wait a moment before changing DOM
-    setTimeout(() => {
-      document.body.innerHTML = `
-        <div class="container">
-          <h1>She said YES 💍💖</h1>
-          <p>My heart is yours forever 🥰</p>
-        </div>
-      `;
-    }, 300);
-  }).catch(err => {
-    console.log("Audio error:", err);
-  });
+  music.play();
+
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <div class="container">
+        <h1>She said YES 💍💖</h1>
+        <p>My heart is yours forever 🥰</p>
+      </div>
+    `;
+  }, 300);
 });
