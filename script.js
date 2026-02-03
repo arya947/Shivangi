@@ -15,22 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
   /* YES button */
   yesBtn.addEventListener("click", () => {
 
-    // play music if available
+    // Play music if available
     if (music) {
       music.loop = true;
       music.play().catch(() => {});
     }
 
-    // YOUR requested content
+    // YOUR REQUESTED PARAGRAPH
     card.innerHTML = `
       <h1>She said YES 💍💖</h1>
-      <p>“From this moment on,
-it’s you and me — in every smile,
-every argument, every dream, and every tomorrow 💞
-I’m all yours.”</p>
+      <p>
+        From this moment on,<br>
+        it’s you and me — in every smile,<br>
+        every argument, every dream, and every tomorrow 💞<br>
+        I’m all yours.
+      </p>
     `;
 
-    // floating hearts
+    // Floating hearts animation
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -42,4 +44,3 @@ I’m all yours.”</p>
   });
 
 });
-
