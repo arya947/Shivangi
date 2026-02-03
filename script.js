@@ -1,39 +1,30 @@
-const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
 
-/* Prepare music */
 const music = new Audio("love.mp3");
 music.loop = true;
+music.volume = 1;
 
 /* NO button runs away */
 noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 100);
   noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  noBtn.style.left = Math.random() * 80 + "vw";
+  noBtn.style.top = Math.random() * 80 + "vh";
 });
 
-/* YES = love + music */
+/* YES click */
 yesBtn.addEventListener("click", () => {
-  music.play();
-
-  document.body.innerHTML = `
-    <div class="container">
-      <h1>She said YES 💍💖</h1>
-      <p>My heart is yours forever 🥰</p>
-    </div>
-  `;
+  music.play().then(() => {
+    // wait a moment before changing DOM
+    setTimeout(() => {
+      document.body.innerHTML = `
+        <div class="container">
+          <h1>She said YES 💍💖</h1>
+          <p>My heart is yours forever 🥰</p>
+        </div>
+      `;
+    }, 300);
+  }).catch(err => {
+    console.log("Audio error:", err);
+  });
 });
-
-/* Floating hearts */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.bottom = "0px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 4000);
-}, 300);
