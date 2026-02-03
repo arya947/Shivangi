@@ -1,45 +1,33 @@
-// Wait until DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
-  const card = document.getElementById("card");
-  const music = document.getElementById("music");
-
-  // SAFETY CHECK
-  if (!yesBtn || !noBtn || !card) {
-    alert("JS not connected properly");
-    return;
-  }
-
-  // NO button moves
-  noBtn.addEventListener("mouseenter", () => {
-    noBtn.style.position = "absolute";
-    noBtn.style.left = Math.random() * 70 + "%";
-    noBtn.style.top = Math.random() * 70 + "%";
-  });
-
-  // YES button works
-  yesBtn.addEventListener("click", () => {
-    if (music) {
-      music.loop = true;
-      music.play().catch(() => {});
-    }
-
-    card.innerHTML = `
-      <h1>She said YES 💍💖</h1>
-      <p>My heart is yours forever 🥰</p>
-    `;
-
-    // Hearts animation
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }, 300);
-  });
-
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div class="container">
+      <h1>Yayyy! 💖🥰</h1>
+      <p>You just made my day 💘</p>
+    </div>
+  `;
+});
+
+/* Hearts animation */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "0px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}, 300);
