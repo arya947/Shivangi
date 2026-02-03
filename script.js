@@ -12,10 +12,11 @@ noBtn.addEventListener("mouseover", () => {
 yesBtn.addEventListener("click", () => {
   document.body.innerHTML = `
     <div class="container">
-      <h1>Yayyy! 💖🥰</h1>
-      <p>You just made my day 💘</p>
-    </div>
-  `;
+card.innerHTML = `
+  <h1>She said YES 💍💖</h1>
+  <p>My heart is yours forever 🥰</p>
+  <p>I promise to make you smile every day ❤️</p>
+`;
 });
 
 /* Hearts animation */
@@ -31,3 +32,4 @@ setInterval(() => {
     heart.remove();
   }, 4000);
 }, 300);
+
