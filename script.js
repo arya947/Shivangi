@@ -1,35 +1,44 @@
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
+document.addEventListener("DOMContentLoaded", () => {
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 100);
-  noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const card = document.querySelector(".container");
+  const music = document.getElementById("music");
+
+  /* NO button runs away */
+  noBtn.addEventListener("mouseenter", () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 70 + "%";
+    noBtn.style.top = Math.random() * 70 + "%";
+  });
+
+  /* YES button */
+  yesBtn.addEventListener("click", () => {
+
+    // play music if available
+    if (music) {
+      music.loop = true;
+      music.play().catch(() => {});
+    }
+
+    // YOUR requested content
+    card.innerHTML = `
+      <h1>She said YES 💍💖</h1>
+      <p>So… what’s next? 😌</p>
+      <p>🌍 More memories</p>
+      <p>🍕 Late night talks</p>
+      <p>🤍 A forever together</p>
+    `;
+
+    // floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 300);
+  });
+
 });
-
-yesBtn.addEventListener("click", () => {
-  document.body.innerHTML = `
-    <div class="container">
-card.innerHTML = `
-  <h1>She said YES 💍💖</h1>
-  <p>My heart is yours forever 🥰</p>
-  <p>I promise to make you smile every day ❤️</p>
-`;
-});
-
-/* Hearts animation */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.bottom = "0px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 4000);
-}, 300);
-
