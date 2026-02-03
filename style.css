@@ -7,7 +7,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ body {
   border-radius: 20px;
   text-align: center;
   position: relative;
-  width: 350px;
+  width: 360px;
 }
 
 h1 {
@@ -47,16 +47,16 @@ button {
   cursor: pointer;
 }
 
-#yes {
+#yesBtn {
   background: #e91e63;
   color: white;
 }
 
-#no {
+#noBtn {
   background: #ddd;
 }
 
-/* Hearts after YES */
+/* Hearts */
 .heart {
   position: fixed;
   bottom: 0;
