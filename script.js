@@ -1,19 +1,18 @@
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
-const music = document.getElementById("bgMusic");
+const music = document.getElementById("music");
 
-/* NO button moves */
-noBtn.addEventListener("mouseover", () => {
+/* NO button runs away */
+noBtn.addEventListener("mouseenter", () => {
   noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * 80 + "vw";
-  noBtn.style.top = Math.random() * 80 + "vh";
+  noBtn.style.left = Math.random() * 70 + "%";
+  noBtn.style.top = Math.random() * 70 + "%";
 });
 
-/* YES button — music + message */
+/* YES button */
 yesBtn.addEventListener("click", () => {
-  music.volume = 1;
   music.loop = true;
-  music.play();   // ✅ works on GitHub Pages
+  music.play();
 
   document.body.innerHTML = `
     <div class="container">
@@ -21,15 +20,15 @@ yesBtn.addEventListener("click", () => {
       <p>My heart is yours forever 🥰</p>
     </div>
   `;
+
+  // floating hearts
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+  }, 300);
 });
-
-/* Floating hearts */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 4000);
-}, 300);
