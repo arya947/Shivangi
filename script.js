@@ -15,13 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
   /* YES button */
   yesBtn.addEventListener("click", () => {
 
-    // Play music if available
+    // 🔊 PLAY MUSIC AFTER YES
     if (music) {
+      music.volume = 1;
       music.loop = true;
-      music.play().catch(() => {});
+      music.play().catch(err => {
+        console.log("Audio blocked:", err);
+      });
     }
 
-    // YOUR REQUESTED PARAGRAPH
+    // 💖 Show message
     card.innerHTML = `
       <h1>She said YES 💍💖</h1>
       <p>
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </p>
     `;
 
-    // Floating hearts animation
+    // ❤️ Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
