@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // YOUR requested content
     card.innerHTML = `
       <h1>She said YES 💍💖</h1>
-      <p>So… what’s next? 😌</p>
-      <p>🌍 More memories</p>
-      <p>🍕 Late night talks</p>
-      <p>🤍 A forever together</p>
+      <p>“From this moment on,
+it’s you and me — in every smile,
+every argument, every dream, and every tomorrow 💞
+I’m all yours.”</p>
     `;
 
     // floating hearts
@@ -42,3 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
